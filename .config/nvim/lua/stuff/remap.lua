@@ -1,5 +1,14 @@
 vim.g.mapleader = ' '
-vim.keymap.set("n", "<leader>sd", vim.cmd.Ex,{})
+vim.keymap.set("n", "<leader>sd", vim.cmd.Ex)
+vim.keymap.set('n', '<leader>e', '<cmd>Ex<CR>') -- open file explorer
+vim.keymap.set('n', '<leader>eq', '<C-w><C-q>') -- close file eplorer
+
+-- telescope
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
 -- move selection
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -52,9 +61,6 @@ vim.keymap.set(
     "<leader>ee",
     "oif err != nil {<CR>}<Esc>Oreturn err<Esc>"
 )
-
-vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/theprimeagen/packer.lua<CR>");
-vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
 
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
