@@ -1,8 +1,7 @@
 -- did not get this to work in windows yet..
 
-require'nvim-treesitter.configs'.setup {
-  -- A list of parser names, or "all" (the five listed parsers should always be installed)
-  ensure_installed = { "lua", "vim", "vimdoc" },
+require'nvim-treesitter.configs'.setup {  
+  ensure_installed = { "gcc", "python", "lua", "vim", "vimdoc" },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,

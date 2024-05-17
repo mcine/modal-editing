@@ -1,12 +1,15 @@
-require ("stuff.remap")
-require ("stuff.packer")
--- require ("stuff.treesitter:")
+require ("stuff.remap") 
+require ("stuff.lazy")
+-- require ("stuff.packer")
+-- require ("stuff.treesitter")
 --
 
 --vim.opt.guicursor = ""
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true -- disable ignore case if at least one letter is uppercase
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4

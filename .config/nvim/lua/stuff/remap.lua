@@ -1,14 +1,23 @@
 vim.g.mapleader = ' '
+
+
 vim.keymap.set("n", "<leader>sd", vim.cmd.Ex)
-vim.keymap.set('n', '<leader>e', '<cmd>Ex<CR>') -- open file explorer
+vim.keymap.set('n', '<leader>ef', '<cmd>Ex<CR>') -- open file explorer
 vim.keymap.set('n', '<leader>eq', '<C-w><C-q>') -- close file eplorer
+
+vim.keymap.set("n", "<leader>ec", '<cmd>e $XDG_CONFIG_HOME/nvim/init.lua<CR>')
+
 
 -- telescope
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+if builtin ~= nil then
+    vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+    vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+    vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+    vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+else
+    print("Telescope not found")
+end
 
 -- move selection
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -32,7 +41,10 @@ vim.keymap.set("n", "<leader>svwm", function()
 end)
 
 -- greatest remap ever - paste over, old goes to null
-vim.keymap.set("x", "<leader>p", [["_dP]])
+--vim.keymap.set("x", "<leader>p", [["_dP]])
+vim.keymap.set("v", "p", "P") -- remap paste to one that does not change stuff in clipboard
+
+vim.keymap.set("n", 'U', '<C-r>')
 
 -- next greatest remap ever : asbjornHaland -- yank to clipboard
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
@@ -55,6 +67,7 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 -- seach and replace
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 vim.keymap.set(
     "n",
